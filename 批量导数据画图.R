@@ -1,4 +1,4 @@
-library("ggplot2")
+ï»¿library("ggplot2")
 library("gridExtra")
 inpath <- "D:/R/ATM"
 outpath <- "D:/R/ATM/Result"
@@ -26,95 +26,95 @@ for (i in 1:length(name)){
   if(!dir.exists(path)) {dir.create(path)}
   if(!dir.exists(paste(path,"/",name[i],sep=""))) {dir.create(paste(path,"/",name[i],sep=""))}
   write.table(M, paste(path,"/",name[i],"/",name[i],".csv",sep=""),row.names = FALSE,col.names = TRUE, quote = FALSE,sep=",",fileEncoding = "GBK")
-#### È¡ÏÖ
-  n <- paste(name[i],"ºÅATM12¸öÔÂÈ¡ÏÖ½ð¶î·Ö²¼Í¼",sep="")
+#### å–çŽ°
+  n <- paste(name[i],"å·ATM12ä¸ªæœˆå–çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
   p1<-ggplot(M,aes(x=y_mth,y=amt_qx/10000))+
     geom_bar(stat="identity") +
-    labs(title=n,x="ÔÂ·Ý",y="È¡ÏÖ½ð¶î(ÍòÔª)")
+    labs(title=n,x="æœˆä»½",y="å–çŽ°é‡‘é¢(ä¸‡å…ƒ)")
   ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p1,
           width = 8, height = 6,  dpi = 300) 
   
-  n <- paste(name[i],"ºÅATM12¸öÔÂÈ¡ÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+  n <- paste(name[i],"å·ATM12ä¸ªæœˆå–çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
    p2<-ggplot(M,aes(x=y_mth,y=nbr_qx))+
      geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$y_mth),y=nbr_qx),size=1)+ 
-     labs(title=n,x="ÔÂ·Ý",y="È¡ÏÖ±ÊÊý")
+     labs(title=n,x="æœˆä»½",y="å–çŽ°ç¬”æ•°")
    
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p2,
            width = 8, height = 6,  dpi = 300) 
-#### ´æÏÖ   
+#### å­˜çŽ°   
    if(sum(M$amt_cx)!=0){
      j<-1
-     n <- paste(name[i],"ºÅATM12¸öÔÂ´æÏÖ½ð¶î·Ö²¼Í¼",sep="")
+     n <- paste(name[i],"å·ATM12ä¸ªæœˆå­˜çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
      p3<-ggplot(M,aes(x=y_mth,y=amt_cx/10000))+
        geom_bar(stat="identity") +
-       labs(title=n,x="ÔÂ·Ý",y="´æÏÖ½ð¶î(ÍòÔª)")
+       labs(title=n,x="æœˆä»½",y="å­˜çŽ°é‡‘é¢(ä¸‡å…ƒ)")
      ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p3,
              width = 8, height = 6,  dpi = 300) 
      
-     n <- paste(name[i],"ºÅATM12¸öÔÂ´æÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+     n <- paste(name[i],"å·ATM12ä¸ªæœˆå­˜çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
      p4<-ggplot(M,aes(x=y_mth,y=nbr_cx))+
        geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$y_mth),y=nbr_cx),size=1)+ 
-       labs(title=n,x="ÔÂ·Ý",y="´æÏÖ±ÊÊý")
+       labs(title=n,x="æœˆä»½",y="å­˜çŽ°ç¬”æ•°")
      
      ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p4,
              width = 8, height = 6,  dpi = 300) 
    }
 
-#### ×ªÕË      
-   n <- paste(name[i],"ºÅATM12¸öÔÂ×ªÕË½ð¶î·Ö²¼Í¼",sep="")
+#### è½¬è´¦      
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆè½¬è´¦é‡‘é¢åˆ†å¸ƒå›¾",sep="")
    p5<-ggplot(M,aes(x=y_mth,y=amt_zz/10000))+
      geom_bar(stat="identity") +
-     labs(title=n,x="ÔÂ·Ý",y="×ªÕË½ð¶î(ÍòÔª)")
+     labs(title=n,x="æœˆä»½",y="è½¬è´¦é‡‘é¢(ä¸‡å…ƒ)")
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p5,
            width = 8, height = 6,  dpi = 300) 
    
-   n <- paste(name[i],"ºÅATM12¸öÔÂ×ªÕË±ÊÊý·Ö²¼Í¼",sep="")
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆè½¬è´¦ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
    p6<-ggplot(M,aes(x=y_mth,y=nbr_zz))+
      geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$y_mth),y=nbr_zz),size=1)+ 
-     labs(title=n,x="ÔÂ·Ý",y="×ªÕË±ÊÊý")
+     labs(title=n,x="æœˆä»½",y="è½¬è´¦ç¬”æ•°")
    
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p6,
            width = 8, height = 6,  dpi = 300) 
    
-   #### È¡ÏÖ±¾´úËû      
-   n <- paste(name[i],"ºÅATM12¸öÔÂÈ¡ÏÖ±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+   #### å–çŽ°æœ¬ä»£ä»–      
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆå–çŽ°æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
    p7<-ggplot(M,aes(x=y_mth,y=amt_qx_bdt/10000))+
      geom_bar(stat="identity") +
-     labs(title=n,x="ÔÂ·Ý",y="È¡ÏÖ±¾´úËû½ð¶î(ÍòÔª)")
+     labs(title=n,x="æœˆä»½",y="å–çŽ°æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p7,
            width = 8, height = 6,  dpi = 300) 
    
-   n <- paste(name[i],"ºÅATM12¸öÔÂÈ¡ÏÖ±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆå–çŽ°æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
    p8<-ggplot(M,aes(x=y_mth,y=nbr_qx_bdt))+
      geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$y_mth),y=nbr_qx_bdt),size=1)+ 
-     labs(title=n,x="ÔÂ·Ý",y="È¡ÏÖ±¾´úËû±ÊÊý")
+     labs(title=n,x="æœˆä»½",y="å–çŽ°æœ¬ä»£ä»–ç¬”æ•°")
    
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p8,
            width = 8, height = 6,  dpi = 300)  
   
-   #### ×ªÕË±¾´úËû      
-   n <- paste(name[i],"ºÅATM12¸öÔÂ×ªÕË±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+   #### è½¬è´¦æœ¬ä»£ä»–      
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆè½¬è´¦æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
    p9<-ggplot(M,aes(x=y_mth,y=amt_zz_bdt/10000))+
      geom_bar(stat="identity") +
-     labs(title=n,x="ÔÂ·Ý",y="×ªÕË±¾´úËû½ð¶î(ÍòÔª)")
+     labs(title=n,x="æœˆä»½",y="è½¬è´¦æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p9,
            width = 8, height = 6,  dpi = 300) 
    
-   n <- paste(name[i],"ºÅATM12¸öÔÂ×ªÕË±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆè½¬è´¦æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
    p10<-ggplot(M,aes(x=y_mth,y=nbr_zz_bdt))+
      geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$y_mth),y=nbr_zz_bdt),size=1)+ 
-     labs(title=n,x="ÔÂ·Ý",y="×ªÕË±¾´úËû±ÊÊý")
+     labs(title=n,x="æœˆä»½",y="è½¬è´¦æœ¬ä»£ä»–ç¬”æ•°")
    
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p10,
            width = 8, height = 6,  dpi = 300)     
    
    
-   ##### ÓÃ³®Á¿
+   ##### ç”¨é’žé‡
       
-   n <- paste(name[i],"ºÅATM12¸öÔÂÓÃ³®Á¿½ð¶î·Ö²¼Í¼",sep="")
+   n <- paste(name[i],"å·ATM12ä¸ªæœˆç”¨é’žé‡é‡‘é¢åˆ†å¸ƒå›¾",sep="")
    p11<-ggplot(M,aes(x=y_mth,y=(amt_qx-amt_cx)/10000))+
      geom_bar(stat="identity") +
-     labs(title=n,x="ÔÂ·Ý",y="ÓÃ³®Á¿½ð¶î(ÍòÔª)")
+     labs(title=n,x="æœˆä»½",y="ç”¨é’žé‡é‡‘é¢(ä¸‡å…ƒ)")
    ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p11,
            width = 8, height = 6,  dpi = 300) 
    
@@ -145,95 +145,95 @@ for (i in 1:length(name)){
     if(!dir.exists(path)) {dir.create(path)}
     if(!dir.exists(paste(path,"/",name[i],sep=""))) {dir.create(paste(path,"/",name[i],sep=""))}
     write.table(M, paste(path,"/",name[i],"/",name[i],".csv",sep=""),row.names = FALSE,col.names = TRUE, quote = FALSE,sep=",",fileEncoding = "GBK")
-    #### È¡ÏÖ
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕÈ¡ÏÖ½ð¶î·Ö²¼Í¼",sep="")
+    #### å–çŽ°
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å–çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p1<-ggplot(M,aes(x=day_of_mth,y=amt_qx/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="ÈÕÆÚ",y="È¡ÏÖ½ð¶î(ÍòÔª)")
+      labs(title=n,x="æ—¥æœŸ",y="å–çŽ°é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p1,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕÈ¡ÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å–çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p2<-ggplot(M,aes(x=day_of_mth,y=nbr_qx))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$day_of_mth),y=nbr_qx),size=1)+ 
-      labs(title=n,x="ÈÕÆÚ",y="È¡ÏÖ±ÊÊý")
+      labs(title=n,x="æ—¥æœŸ",y="å–çŽ°ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p2,
             width = 8, height = 6,  dpi = 300) 
-    #### ´æÏÖ   
+    #### å­˜çŽ°   
     if(sum(M$amt_cx)!=0){
       j<-1
-      n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ´æÏÖ½ð¶î·Ö²¼Í¼",sep="")
+      n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å­˜çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
       p3<-ggplot(M,aes(x=day_of_mth,y=amt_cx/10000))+
         geom_bar(stat="identity") +
-        labs(title=n,x="ÈÕÆÚ",y="´æÏÖ½ð¶î(ÍòÔª)")
+        labs(title=n,x="æ—¥æœŸ",y="å­˜çŽ°é‡‘é¢(ä¸‡å…ƒ)")
       ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p3,
               width = 8, height = 6,  dpi = 300) 
       
-      n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ´æÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+      n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å­˜çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
       p4<-ggplot(M,aes(x=day_of_mth,y=nbr_cx))+
         geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$day_of_mth),y=nbr_cx),size=1)+ 
-        labs(title=n,x="ÈÕÆÚ",y="´æÏÖ±ÊÊý")
+        labs(title=n,x="æ—¥æœŸ",y="å­˜çŽ°ç¬”æ•°")
       
       ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p4,
               width = 8, height = 6,  dpi = 300) 
     }
     
-    #### ×ªÕË      
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ×ªÕË½ð¶î·Ö²¼Í¼",sep="")
+    #### è½¬è´¦      
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥è½¬è´¦é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p5<-ggplot(M,aes(x=day_of_mth,y=amt_zz/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="ÈÕÆÚ",y="×ªÕË½ð¶î(ÍòÔª)")
+      labs(title=n,x="æ—¥æœŸ",y="è½¬è´¦é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p5,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ×ªÕË±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥è½¬è´¦ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p6<-ggplot(M,aes(x=day_of_mth,y=nbr_zz))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$day_of_mth),y=nbr_zz),size=1)+ 
-      labs(title=n,x="ÈÕÆÚ",y="×ªÕË±ÊÊý")
+      labs(title=n,x="æ—¥æœŸ",y="è½¬è´¦ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p6,
             width = 8, height = 6,  dpi = 300) 
     
-    #### È¡ÏÖ±¾´úËû      
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕÈ¡ÏÖ±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+    #### å–çŽ°æœ¬ä»£ä»–      
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å–çŽ°æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p7<-ggplot(M,aes(x=day_of_mth,y=amt_qx_bdt/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="ÈÕÆÚ",y="È¡ÏÖ±¾´úËû½ð¶î(ÍòÔª)")
+      labs(title=n,x="æ—¥æœŸ",y="å–çŽ°æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p7,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕÈ¡ÏÖ±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥å–çŽ°æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p8<-ggplot(M,aes(x=day_of_mth,y=nbr_qx_bdt))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$day_of_mth),y=nbr_qx_bdt),size=1)+ 
-      labs(title=n,x="ÈÕÆÚ",y="È¡ÏÖ±¾´úËû±ÊÊý")
+      labs(title=n,x="æ—¥æœŸ",y="å–çŽ°æœ¬ä»£ä»–ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p8,
             width = 8, height = 6,  dpi = 300)  
     
-    #### ×ªÕË±¾´úËû      
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ×ªÕË±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+    #### è½¬è´¦æœ¬ä»£ä»–      
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥è½¬è´¦æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p9<-ggplot(M,aes(x=day_of_mth,y=amt_zz_bdt/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="ÈÕÆÚ",y="×ªÕË±¾´úËû½ð¶î(ÍòÔª)")
+      labs(title=n,x="æ—¥æœŸ",y="è½¬è´¦æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p9,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕ×ªÕË±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥è½¬è´¦æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p10<-ggplot(M,aes(x=day_of_mth,y=nbr_zz_bdt))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$day_of_mth),y=nbr_zz_bdt),size=1)+ 
-      labs(title=n,x="ÈÕÆÚ",y="×ªÕË±¾´úËû±ÊÊý")
+      labs(title=n,x="æ—¥æœŸ",y="è½¬è´¦æœ¬ä»£ä»–ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p10,
             width = 8, height = 6,  dpi = 300)     
     
     
-    ##### ÓÃ³®Á¿
+    ##### ç”¨é’žé‡
     
-    n <- paste(name[i],"ºÅATMÃ¿ÔÂ¸÷ÈÕÓÃ³®Á¿½ð¶î·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATMæ¯æœˆå„æ—¥ç”¨é’žé‡é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p11<-ggplot(M,aes(x=day_of_mth,y=(amt_qx-amt_cx)/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="ÈÕÆÚ",y="ÓÃ³®Á¿½ð¶î(ÍòÔª)")
+      labs(title=n,x="æ—¥æœŸ",y="ç”¨é’žé‡é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p11,
             width = 8, height = 6,  dpi = 300) 
     
@@ -267,95 +267,95 @@ for (i in 1:length(name)){
     if(!dir.exists(path)) {dir.create(path)}
     if(!dir.exists(paste(path,"/",name[i],sep=""))) {dir.create(paste(path,"/",name[i],sep=""))}
     write.table(M, paste(path,"/",name[i],"/",name[i],".csv",sep=""),row.names = FALSE,col.names = TRUE, quote = FALSE,sep=",",fileEncoding = "GBK")
-    #### È¡ÏÖ
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±È¡ÏÖ½ð¶î·Ö²¼Í¼",sep="")
+    #### å–çŽ°
+    n <- paste(name[i],"å·ATM24å°æ—¶å–çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p1<-ggplot(M,aes(x=occ_hour,y=amt_qx/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="Ð¡Ê±",y="È¡ÏÖ½ð¶î(ÍòÔª)")
+      labs(title=n,x="å°æ—¶",y="å–çŽ°é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p1,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±È¡ÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATM24å°æ—¶å–çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p2<-ggplot(M,aes(x=occ_hour,y=nbr_qx))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$occ_hour),y=nbr_qx),size=1)+ 
-      labs(title=n,x="Ð¡Ê±",y="È¡ÏÖ±ÊÊý")
+      labs(title=n,x="å°æ—¶",y="å–çŽ°ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p2,
             width = 8, height = 6,  dpi = 300) 
-    #### ´æÏÖ   
+    #### å­˜çŽ°   
     if(sum(M$amt_cx)!=0){
       j<-1
-      n <- paste(name[i],"ºÅATM24Ð¡Ê±´æÏÖ½ð¶î·Ö²¼Í¼",sep="")
+      n <- paste(name[i],"å·ATM24å°æ—¶å­˜çŽ°é‡‘é¢åˆ†å¸ƒå›¾",sep="")
       p3<-ggplot(M,aes(x=occ_hour,y=amt_cx/10000))+
         geom_bar(stat="identity") +
-        labs(title=n,x="Ð¡Ê±",y="´æÏÖ½ð¶î(ÍòÔª)")
+        labs(title=n,x="å°æ—¶",y="å­˜çŽ°é‡‘é¢(ä¸‡å…ƒ)")
       ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p3,
               width = 8, height = 6,  dpi = 300) 
       
-      n <- paste(name[i],"ºÅATM24Ð¡Ê±´æÏÖ±ÊÊý·Ö²¼Í¼",sep="")
+      n <- paste(name[i],"å·ATM24å°æ—¶å­˜çŽ°ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
       p4<-ggplot(M,aes(x=occ_hour,y=nbr_cx))+
         geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$occ_hour),y=nbr_cx),size=1)+ 
-        labs(title=n,x="Ð¡Ê±",y="´æÏÖ±ÊÊý")
+        labs(title=n,x="å°æ—¶",y="å­˜çŽ°ç¬”æ•°")
       
       ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p4,
               width = 8, height = 6,  dpi = 300) 
     }
     
-    #### ×ªÕË      
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±×ªÕË½ð¶î·Ö²¼Í¼",sep="")
+    #### è½¬è´¦      
+    n <- paste(name[i],"å·ATM24å°æ—¶è½¬è´¦é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p5<-ggplot(M,aes(x=occ_hour,y=amt_zz/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="Ð¡Ê±",y="×ªÕË½ð¶î(ÍòÔª)")
+      labs(title=n,x="å°æ—¶",y="è½¬è´¦é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p5,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±×ªÕË±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATM24å°æ—¶è½¬è´¦ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p6<-ggplot(M,aes(x=occ_hour,y=nbr_zz))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$occ_hour),y=nbr_zz),size=1)+ 
-      labs(title=n,x="Ð¡Ê±",y="×ªÕË±ÊÊý")
+      labs(title=n,x="å°æ—¶",y="è½¬è´¦ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p6,
             width = 8, height = 6,  dpi = 300) 
     
-    #### È¡ÏÖ±¾´úËû      
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±È¡ÏÖ±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+    #### å–çŽ°æœ¬ä»£ä»–      
+    n <- paste(name[i],"å·ATM24å°æ—¶å–çŽ°æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p7<-ggplot(M,aes(x=occ_hour,y=amt_qx_bdt/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="Ð¡Ê±",y="È¡ÏÖ±¾´úËû½ð¶î(ÍòÔª)")
+      labs(title=n,x="å°æ—¶",y="å–çŽ°æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p7,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±È¡ÏÖ±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATM24å°æ—¶å–çŽ°æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p8<-ggplot(M,aes(x=occ_hour,y=nbr_qx_bdt))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$occ_hour),y=nbr_qx_bdt),size=1)+ 
-      labs(title=n,x="Ð¡Ê±",y="È¡ÏÖ±¾´úËû±ÊÊý")
+      labs(title=n,x="å°æ—¶",y="å–çŽ°æœ¬ä»£ä»–ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p8,
             width = 8, height = 6,  dpi = 300)  
     
-    #### ×ªÕË±¾´úËû      
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±×ªÕË±¾´úËû½ð¶î·Ö²¼Í¼",sep="")
+    #### è½¬è´¦æœ¬ä»£ä»–      
+    n <- paste(name[i],"å·ATM24å°æ—¶è½¬è´¦æœ¬ä»£ä»–é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p9<-ggplot(M,aes(x=occ_hour,y=amt_zz_bdt/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="Ð¡Ê±",y="×ªÕË±¾´úËû½ð¶î(ÍòÔª)")
+      labs(title=n,x="å°æ—¶",y="è½¬è´¦æœ¬ä»£ä»–é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p9,
             width = 8, height = 6,  dpi = 300) 
     
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±×ªÕË±¾´úËû±ÊÊý·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATM24å°æ—¶è½¬è´¦æœ¬ä»£ä»–ç¬”æ•°åˆ†å¸ƒå›¾",sep="")
     p10<-ggplot(M,aes(x=occ_hour,y=nbr_zz_bdt))+
       geom_point(stat="identity") +  geom_line(aes(x=as.numeric(M$occ_hour),y=nbr_zz_bdt),size=1)+ 
-      labs(title=n,x="Ð¡Ê±",y="×ªÕË±¾´úËû±ÊÊý")
+      labs(title=n,x="å°æ—¶",y="è½¬è´¦æœ¬ä»£ä»–ç¬”æ•°")
     
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p10,
             width = 8, height = 6,  dpi = 300)     
     
     
-    ##### ÓÃ³®Á¿
+    ##### ç”¨é’žé‡
     
-    n <- paste(name[i],"ºÅATM24Ð¡Ê±ÓÃ³®Á¿½ð¶î·Ö²¼Í¼",sep="")
+    n <- paste(name[i],"å·ATM24å°æ—¶ç”¨é’žé‡é‡‘é¢åˆ†å¸ƒå›¾",sep="")
     p11<-ggplot(M,aes(x=occ_hour,y=(amt_qx-amt_cx)/10000))+
       geom_bar(stat="identity") +
-      labs(title=n,x="Ð¡Ê±",y="ÓÃ³®Á¿½ð¶î(ÍòÔª)")
+      labs(title=n,x="å°æ—¶",y="ç”¨é’žé‡é‡‘é¢(ä¸‡å…ƒ)")
     ggsave( file = paste(path,"/",name[i],"/",n,".jpg",sep=""), plot = p11,
             width = 8, height = 6,  dpi = 300) 
     
