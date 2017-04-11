@@ -12,5 +12,9 @@ qnorm(0.9,mean=500,sd=100) #均值为500，标准差为100的正态分布的0.9�
 rnorm(50,mean=50,sd=10) #生成50个均值为50，标准差为10的正态随机数
 
 #######################################################################
+#二项分布
 pbinom(9,size=10,prob=0.3)
 
+x<- c(1:1000000)
+y <- dbinom(x,size=length(x),prob=0.0003)
+plot(x, y, type = "l", xlab = "binom Deviate", ylab = "Density",  yaxs = "i",xlim = c(200,400))
