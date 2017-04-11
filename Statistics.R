@@ -21,3 +21,9 @@ pbinom(9,size=10,prob=0.3)
 x<- c(1:1000000)
 y <- dbinom(x,size=length(x),prob=0.0003)
 plot(x, y, type = "l", xlab = "binom Deviate", ylab = "Density",  yaxs = "i",xlim = c(200,400))
+
+#################################################################
+#pois
+x<- c(1:1000)
+y <- dpois(x,1)
+plot(x, y, type = "l", xlab = "pois Deviate", ylab = "Density",  yaxs = "i",xlim = c(0,10))
