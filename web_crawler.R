@@ -1,7 +1,10 @@
 
 # install.packages("rvest")
 library(rvest)
-url<-"http://www.weather.com.cn/weather/101210101.shtml"
+
+city<- "101210101"
+url<-paste('http://www.weather.com.cn/weather/',city,'.shtml',sep="")
+
 # 解析网页
 web<-read_html(url,encoding = "utf8")
 # 天气数据抓取
