@@ -47,10 +47,12 @@ df <- data.frame(month = 7, max = max_value, min = min_value)
 
 
 ####################################################################
-find_data <- function(x, gps, length) {
-  x_char <- paste("0",x,sep="")
+find_data <- function(year,x, gps) {
+  length = mon_num(year,x)
   
-  page <- readLines(paste("http://lishi.tianqi.com/",gps,"/2016", x_char, ".html", sep = ""))
+  ifelse(nchar(x)==1, x_char <- paste("0",x,sep=""), x_char <- x)
+  
+  page <- readLines(paste("http://lishi.tianqi.com/",gps,"/",year, x_char, ".html", sep = ""))
   
   point <- grep(paste("绍兴2016年", x, "月份天气详情", sep = ""), page)
   
@@ -75,6 +77,18 @@ find_data <- function(x, gps, length) {
   df
 }
 
+mon_num <- function(year,mon){
+  
+  if(mon==2){
+    ifelse (year %% 4 == 0 && year %% 100 != 0 || year %% 400 == 0,mon_num <- 29,mon_num <- 28)   }  
+  if(mon %in% c(1,3,5,7,8,10,12)) mon_num <- 31
+  if(mon %in% c(4,6,9,11)) mon_num <- 30
+  return(mon_num)
+}
+
+
+
 # 返回2015年6月的气温数据
-df_6 <- find_data(x = 6, gps = "shaoxing", length = 30)
+df_6 <- find_data(year =2016,x = 6, gps = "shaoxing")
+
 
