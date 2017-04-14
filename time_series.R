@@ -47,6 +47,9 @@ holt(ts)
 ets(ts, model="AAA")  ## 三指数 水平项、斜率、季节项
 hw(ts)
 
-
-
-
+fit <- ets(nhtemp, model="ANN")
+forecast(fit, 1)
+plot(forecast(fit, 1), xlab="Year",
+     ylab=expression(paste("Temperature (", degree*F,")")),
+     main="New Haven Annual Mean Temperature")
+accuracy(fit)
