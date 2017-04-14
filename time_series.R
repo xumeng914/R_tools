@@ -35,5 +35,18 @@ plot(lAirPassengers, ylab="log(AirPassengers)")
 fit <- stl(lAirPassengers, s.window="period")  # s.windows="periodic"可使得季节效应在各年间都一样
 plot(fit)
 fit$time.series
+exp(fit$time.series)
+
+
+#########################################
+## 3种拟合模型
+ets(ts, model="ANN")  ## 单指数 水平项 
+ses(ts)
+ets(ts, model="AAN")  ## 双指数 水平项、斜率
+holt(ts)
+ets(ts, model="AAA")  ## 三指数 水平项、斜率、季节项
+hw(ts)
+
+
 
 
