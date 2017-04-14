@@ -6,3 +6,12 @@ tsales
 
 
 plot(tsales)
+
+start(tsales)
+end(tsales)
+frequency(tsales)
+
+tsales.subset <- window(tsales, start=c(2003, 5), end=c(2004, 6))
+tsales.subset
+
+
