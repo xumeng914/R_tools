@@ -48,9 +48,12 @@ df <- data.frame(month = 7, max = max_value, min = min_value)
 
 ####################################################################
 find_data <- function(year,x, gps) {
-  length = mon_num(year,x)
+  length <- mon_num(year,x)
   
   ifelse(nchar(x)==1, x_char <- paste("0",x,sep=""), x_char <- x)
+  
+  day <- as.Date(paste(year,x_char,c(1:length),sep = "-"), "%Y-%m-%d")
+  
   
   page <- readLines(paste("http://lishi.tianqi.com/",gps,"/",year, x_char, ".html", sep = ""))
   
@@ -72,7 +75,7 @@ find_data <- function(year,x, gps) {
   
   wind_value <- as.character(unlist(lapply(wind_char, function(x) strsplit(x, ">|<")[[1]][3])))
   
-  df <- data.frame(month = x, max = max_value, min = min_value, weather = weather_value, wind = wind_value)
+  df <- data.frame(day = day, max = max_value, min = min_value, weather = weather_value, wind = wind_value)
   
   df
 }
@@ -89,6 +92,6 @@ mon_num <- function(year,mon){
 
 
 # 返回2015年6月的气温数据
-df_6 <- find_data(year =2016,x = 6, gps = "shaoxing")
+df <- find_data(year =2016,x = 3, gps = "shaoxing")
 
 
