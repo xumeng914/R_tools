@@ -94,4 +94,21 @@ mon_num <- function(year,mon){
 # 返回2015年6月的气温数据
 df <- find_data(year =2016,x = 3, gps = "shaoxing")
 
+########################################################################
+weather <- data.frame(day=vector(length=0),
+                      max=vector(mode="numeric",length=0),
+                      min=vector(mode="numeric",length=0),
+                      weather=vector(mode="character",length=0),
+                      wind=vector(mode="character",length=0))
+for (i in 3:12){
+  df <- find_data(year =2016,x = i, gps = "shaoxing")
+  weather <- rbind(weather,df)
+}
 
+#for (i in 1:4){
+#  df <- find_data(year =2017,x = i, gps = "shaoxing")
+#  weather <- rbind(weather,df)
+#}
+#
+#df <- find_data(year =2017,x = 3, gps = "shaoxing")
+save(weather, file = "weather.RData")
