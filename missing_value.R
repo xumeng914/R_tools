@@ -52,7 +52,7 @@ imp <- mice(sleep, seed=123)
 fit <- with(imp, lm(Dream ~ Span + Gest))
 pooled <- pool(fit)
 summary(pooled)
-
+result4=complete(imp,action=3)#选择第三个插补数据集作为结果  
 
 
 
